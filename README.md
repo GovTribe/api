@@ -8,7 +8,7 @@ This repository tracks issues for GovTribe's Integrated Government Contracting a
 https://app.swaggerhub.com/apis-docs/govtribe/api/1.0.0
 
 ## Access
-To get access, you'll need a GovTribe account: https://govtribe.com. All GovTribe accounts come with free API Access. You can generate API Access Tokens at https://govtribe.com/developer.  These keys are limited to 100/requests per day. If you need more requests, please contact us at help@govtribe.com.
+To get access, you'll need a GovTribe account: https://govtribe.com. All GovTribe accounts come with free API Access. You can generate API Access Tokens at https://govtribe.com/developer.  These tokens are limited to 100/requests per day. If you need more requests, please contact us at help@govtribe.com.
 
 ## What Is It?
 The API provides a consistent, well-documented, and simple way to retrieve details and relationships about most things involved in the Federal Contracting and Grant-Making process. This includes Federal Contract and Grant Opportunities, Federal Contract and Grant Awards, as well as Vendors, Agencies, and Federal People:
