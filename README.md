@@ -1,7 +1,5 @@
 # GovTribe API
 
-**Note:** This feature is not yet available. We expect the GovTribe API to launch soon.
-
 This repository tracks issues for GovTribe's Integrated Government Contracting and Grant-Making Market Intelligence API. The API is built using [JSON:API](https://jsonapi.org/) and documented in [OpenAPI](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md).
 
 ## Documentation
