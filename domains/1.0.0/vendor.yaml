@@ -1,0 +1,207 @@
+# OpenAPI version identifier - required for OpenAPI 3.0 domains
+openapi: 3.0.0
+
+info:
+  title: Vendor
+  description: Vendor components
+  version: '1.0.0'
+
+components:
+
+  schemas:
+   
+    VendorIndex:
+      allOf:
+        - $ref: 'https://api.swaggerhub.com/domains/govtribe/common/1.0.0#/components/schemas/BaseIndex'
+        - type: object
+          properties:
+            data :
+              type: array
+              description: A listing of Vendor resources matching the provided parameters.
+              items:
+                $ref: '#/components/schemas/VendorResource'
+  
+    VendorDetail:
+      type: object
+      properties:
+        data :
+          $ref: '#/components/schemas/VendorResource'  
+            
+    VendorResource:
+      type: object
+      properties:
+        type: 
+          type: string
+          example: vendor
+        id: 
+          type: string
+          example: U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09
+        attributes:
+          $ref: '#/components/schemas/VendorAttributes'
+        links:
+          $ref: '#/components/schemas/VendorLinks'
+        relationships:
+          $ref: '#/components/schemas/VendorRelationships'
+          
+    VendorRelationships:
+      type: object
+      properties: 
+        primary-naics-category: 
+          type: object
+          nullable: true
+          description: An object representing the relationship to the Vendor's chosen primary NAICS Category
+          properties:
+            data:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: naics-category
+                id:
+                  type: string
+                  example: 336611-N
+            links: 
+              type: object
+              properties:
+                related:
+                  type: string
+                  format: uri-reference
+                  example: /vendor/U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09/primary-naics-category
+                  description: A uri for the detail resource referenced in the relationship
+        vendor-contact-people:
+          type: object
+          nullable: true
+          description: An object representing the relationship between a Vendor and its points of contact (Vendor Contact People) 
+          properties:
+            links:
+              type: object
+              properties:
+                related:
+                  type: string
+                  format: uri-reference
+                  example: /vendor/U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09/vendor-contact-people
+                  description: A uri for the listing of detail resources referenced in the relationship
+        federal-contract-awards:
+          type: object
+          nullable: true
+          description: An object representing the relationship between a Vendor and its prime Federal Contract Awards.
+          properties:
+            links:
+              type: object
+              properties:
+                related:
+                  type: string
+                  format: uri-reference
+                  example: /vendor/U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09/federal-contract-awards
+                  description: A uri for the listing of detail resources referenced in the relationship
+        federal-contract-idvs:
+          type: object
+          nullable: true
+          description: An object representing the relationship between a Vendor and its prime Federal Contract IDVs.
+          properties:
+            links:
+              type: object
+              properties:
+                related:
+                  type: string
+                  format: uri-reference
+                  example: /vendor/U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09/federal-contract-idvs
+                  description: A uri for the listing of detail resources referenced in the relationship
+                    
+    VendorAttributes:
+      type: object
+      properties:
+        cage-code:
+          type: string
+          example: 6XKE3
+          description: The CAGE code assigned to the Vendor
+        created-at:
+          type: string
+          format: date-time
+          description: The date the Vendor registered with the federal government.
+        deleted-at:
+          type: string
+          format: date-time
+          description: The date the Vendor deleted its registration with the Federal Government
+        entity-structure:
+          type: string
+          description: The entity structure of the Vendor
+          enum: [Corporate Entity (Not Tax Exempt), Corporate Entity (Tax Exempt), Sole Proprietorship, U.S. Government Entity, Country - Foreign Government, International Organization, Other]
+        expires-at:
+          type: string
+          format: date-time
+          description: The date the Vendor's registration expires.
+        name:
+          type: string
+          example: GovTribe Inc.
+          description: The name of the Vendor. 
+        updated-at: 
+          type: string
+          format: date-time
+          description: The last time the Vendor's registration was updated. 
+    
+    VendorLinks:
+      type: object
+      properties:
+        self: 
+          type: string
+          format: uri-reference
+          example: /vendor/U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09
+        external:
+          type: string
+          format: uri-reference
+          nullable: true
+          example: https://govtribe.com
+          description: If available, a link to the vendor website 
+   
+  parameters:
+  
+    VendorId:
+      in: path
+      name: id
+      description: Pass a required Vendor
+      required: true
+      example: U3RsbGhPNkxuVk4rSUplUmhPWW5EZz09
+      schema:
+        type: string
+        
+    VendorInclude:
+      in: query
+      name: include
+      style: form
+      explode: false
+      required: false
+      description: Include resources related to the Vendor(s).
+      schema:
+        type: array  
+        items:
+          type: string
+          enum: [primary-naics-category]
+          
+    VendorFilters:
+      in: query
+      name: filter
+      style: deepObject
+      schema:
+        type: object
+        properties:
+          cage-code:
+            type: string
+            description: A comma seperated string of CAGE codes
+            example: 79FC1,443C1
+          id:
+            type: string
+            description: A comma seperated string of Vendor ids
+            example: N2RTcHhHNjF6bGpwR1JJam15TkRlZz09,N1RZK3c5VFduRU1LV1RXM1htZ3MyUT09
+            
+    VendorSort:
+      in: query
+      name: sort
+      style: form
+      explode: false
+      required: false
+      description: "SortVendors. Prepend '-' for descending."
+      schema:
+        type: string
+        description: The date the Vendor registered with the federal government.
+        enum: [created-at,-created-at]
