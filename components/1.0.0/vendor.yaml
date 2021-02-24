@@ -58,7 +58,7 @@ components:
                   example: naics-category
                 id:
                   type: string
-                  example: 336611-N
+                  example: 336611-N-foo
             links: 
               type: object
               properties:
