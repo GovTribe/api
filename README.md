@@ -3,10 +3,10 @@
 This repository tracks issues for GovTribe's Integrated Government Contracting and Grant-Making Market Intelligence API. The API is built using [JSON:API](https://jsonapi.org/) and documented in [OpenAPI](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md).
 
 ## Documentation
-https://app.swaggerhub.com/apis-docs/govtribe/api/1.0.0
+https://app.swaggerhub.com/apis-docs/govtribe/api
 
 ## Access
-To get access, you'll need a GovTribe account: https://govtribe.com. All GovTribe accounts come with free API Access. You can generate API Access Tokens at https://govtribe.com/developer.  These tokens are limited to 100/requests per day. If you need more requests, please contact us at help@govtribe.com.
+To get access, you'll need a GovTribe account and active subscription: https://govtribe.com. You can generate API Access Tokens at https://govtribe.com/developer.
 
 ## What Is It?
 The API provides a consistent, well-documented, and simple way to retrieve details and relationships about most things involved in the Federal Contracting and Grant-Making process. This includes Federal Contract and Grant Opportunities, Federal Contract and Grant Awards, as well as Vendors, Agencies, and Federal People:
